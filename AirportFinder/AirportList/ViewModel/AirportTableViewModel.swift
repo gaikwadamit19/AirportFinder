@@ -51,7 +51,8 @@ class AirportTableViewModel {
             for airport in airportList {
                 let airportCellViewModel: AirportTableViewCellViewModel = AirportTableViewCellViewModel(cityName: airport.name ?? "", latitude: Double(airport.lat ?? "0") ?? 0, longitude: Double(airport.lon ?? "0") ?? 0)
                 self?.airportTableViewCellViewModelList.append(airportCellViewModel)
-                //Data loaded first time
+                
+                //Once JSON fully get loaded
                 NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFICATION_DATASOURCE_UPDATED), object: nil)
             }
         }

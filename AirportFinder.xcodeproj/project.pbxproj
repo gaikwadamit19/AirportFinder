@@ -126,9 +126,9 @@
 		93C820832294584600531116 /* AirportFinder */ = {
 			isa = PBXGroup;
 			children = (
-				939D60BB2294981400E70B60 /* AirportDetails */,
-				93C8209C2294611400531116 /* AirportList */,
 				93C82096229458E500531116 /* Helper */,
+				93C8209C2294611400531116 /* AirportList */,
+				939D60BB2294981400E70B60 /* AirportDetails */,
 				93C820842294584600531116 /* AppDelegate.swift */,
 				93C820882294584600531116 /* Main.storyboard */,
 				93C8208B2294584700531116 /* Assets.xcassets */,

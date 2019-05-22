@@ -21,7 +21,7 @@ class AirportTableViewController: UIViewController {
         
         self.navigationItem.title = kSearchScreenTitle
         
-        //Notification on favorite updated
+        //Notification on data source loaded from url
         NotificationCenter.default.addObserver(self, selector: #selector(airportDataUpdated), name: Notification.Name(NOTIFICATION_DATASOURCE_UPDATED), object: nil)
     }
     
@@ -37,7 +37,8 @@ class AirportTableViewController: UIViewController {
     }
     
     /**
-     This method updates the Datasource when any save operation with Database
+     This method updates the controller that data finished loading,
+     We can use Reactive swift instead of Notification for responsive communication
      */
     @objc private func airportDataUpdated() {
         DispatchQueue.main.async { [weak self] in
