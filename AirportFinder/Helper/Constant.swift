@@ -7,33 +7,42 @@
 //
 
 
-//MARK: JSON Data
-let kAirportServerFilePath: String = "https://gist.githubusercontent.com/tdreyno/4278655/raw/7b0762c09b519f40397e4c3e100b097d861f5588/airports.json"
-let kAirportBundleFileName: String = "Airports.txt"
-
-//MARK: Screen Title
-let kSearchScreenTitle: String = "Search Airport"
-
-//MARK: AIrport List Screen
-let kAirportTableViewCellIdentifire = "AirportTableViewCellIdentifire"
-
-//MARK: Details Screen
-let kDetailScreenTitle: String = "Near By Airport"
-let kDetailSegueIdentifire: String = "DetailSegueIdentifire"
-let kAirportName: String = "Airport Name:"
-let kRunwayLenght: String = "Runway Lenght:"
-let kCountryName: String = "Country Name:"
-let kNotAvailableString: String = "Not Available"
-
 //MARK: Airport Model Constants
 let kWoeId: String = "woeid"
 
 //MARK: Notification
 let NOTIFICATION_DATASOURCE_UPDATED = "DATASOURCE_UPDATE"
 
-//MARK: Alert Utility
-let kAlert: String = "Alert"
-let kAlertButtonTitle: String = "OK"
-let kUnableToLoadJsonErrorMessage: String = "Sorry!! Unable to load Airport Data. Please try again later"
-let kNoJsonDataAvailableMessage: String = "Sorry!! No data available. Please try again later"
+//MARK: JSON Data
+struct FilePath {
+    static let AirportServer: String = "https://gist.githubusercontent.com/tdreyno/4278655/raw/7b0762c09b519f40397e4c3e100b097d861f5588/airports.json"
+    static let AirportBundle: String = "Airports.txt"
+}
 
+//MARK: Screen Title
+struct ScreenTitles {
+    static let Search: String = "Search Airport"
+    static let Detail: String = "Near By Airport"
+}
+
+//MARK: Cell Identifires
+struct Identifires {
+    static let AirportTableView = "AirportTableViewCellIdentifire"
+    static let DetailSegue: String = "DetailSegueIdentifire"
+}
+
+//MARK: Cell Labels
+struct CellLabels {
+    static let AirportName: String = "Airport Name:"
+    static let RunwayLenght: String = "Runway Lenght:"
+    static let CountryName: String = "Country Name:"
+    static let NotAvailable: String = "Not Available"
+}
+
+//MARK: Alert Utility
+struct AlertStrings {
+    static let Alert: String = "Alert"
+    static let AlertButton: String = "OK"
+    static let UnableToLoadJsonErrorMessage: String = "Sorry!! Unable to load Airport Data. Please try again later"
+    static let NoJsonDataAvailableMessage: String = "Sorry!! No data available. Please try again later"
+}

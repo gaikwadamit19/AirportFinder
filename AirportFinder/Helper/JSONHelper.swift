@@ -17,7 +17,7 @@ struct JSONHelper {
      - Parameter isBundleFile: if true, search file into bundle else directly use path considering as server file path.
      - Returns: Array of Airport objects.
      */
-    static func loadJson(filePath: String, isBundleFile: Bool = false, completionHandler: @escaping (Array<Airport>?) -> Void) {
+    static func loadJson(filePath: String, isBundleFile: Bool = false, completionHandler: @escaping ([Airport]?) -> Void) {
         
         guard let jsonUrl = isBundleFile ? Bundle.main.url(forResource: filePath, withExtension: nil) :  URL(string: filePath) else {
             completionHandler(nil)
@@ -27,7 +27,7 @@ struct JSONHelper {
             let decoder = JSONDecoder()
             do {
                 let jsonData: Data = try Data(contentsOf: jsonUrl)
-                let airportDataArray: Array<Airport> = try decoder.decode(Array<Airport>.self, from: jsonData)
+                let airportDataArray: Array<Airport> = try decoder.decode([Airport].self, from: jsonData)
                 completionHandler(airportDataArray)
             } catch {
                 completionHandler([])

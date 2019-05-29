@@ -13,7 +13,7 @@ class AirportDetailsTableViewModel {
     private let airporterTableModel: AirportDetailsTableModel?
     private var airportTableViewCellViewModelList: Array<AirportDetailsTableCellViewModel> = []
 
-    init(airports: Array<Airport>) {
+    init(airports: [Airport]) {
         airporterTableModel = AirportDetailsTableModel(airports: airports)
         createCellViewModels()
     }

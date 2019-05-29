@@ -17,8 +17,8 @@ class UtilityHelper {
      - Parameter viewController: On which AlertView will get shown.
      */
     static func showAlertView(message: String) {
-        let alertController = UIAlertController(title: kAlert, message: message, preferredStyle: .alert)
-        let alertAction: UIAlertAction = UIAlertAction(title: kAlertButtonTitle, style: .default, handler: nil)
+        let alertController = UIAlertController(title: AlertStrings.Alert, message: message, preferredStyle: .alert)
+        let alertAction: UIAlertAction = UIAlertAction(title: AlertStrings.AlertButton, style: .default, handler: nil)
         alertController.addAction(alertAction)
         UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }

@@ -7,7 +7,7 @@
 //
 
 protocol IAirportTableNetworkDataDao {
-    func getAirportList(completionHandler: @escaping (Array<Airport>?) -> Void)
+    func getAirportList(completionHandler: @escaping ([Airport]?) -> Void)
 }
 
 //MARK: Fetch Data
@@ -17,9 +17,9 @@ class AirportTableNetworkDataDao: IAirportTableNetworkDataDao {
      
      - Returns: Airport list of type Array.
      */
-    func getAirportList(completionHandler: @escaping (Array<Airport>?) -> Void) {
+    func getAirportList(completionHandler: @escaping ([Airport]?) -> Void) {
         // Server json file
-        return JSONHelper.loadJson(filePath: kAirportServerFilePath, isBundleFile: false) { (airportList) in
+        return JSONHelper.loadJson(filePath: FilePath.AirportServer, isBundleFile: false) { (airportList) in
             guard !(airportList?.isEmpty ?? true) else {
                 completionHandler(nil)
                 return
@@ -29,7 +29,7 @@ class AirportTableNetworkDataDao: IAirportTableNetworkDataDao {
         
         // Bundle Json file
         /*
-         return JSONHelper.loadJson(filePath: kAirportBundleFileName, isBundleFile: true) { (airportList) in
+         return JSONHelper.loadJson(filePath: FilePath.AirportBundle, isBundleFile: true) { (airportList) in
          completionHandler(airportList?.filter{ !($0.name?.isEmpty ?? true) } ?? [])
          }
          */

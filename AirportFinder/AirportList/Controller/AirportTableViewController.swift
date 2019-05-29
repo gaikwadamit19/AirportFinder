@@ -19,14 +19,14 @@ class AirportTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = kSearchScreenTitle
+        self.navigationItem.title = ScreenTitles.Search
         
         //Notification on data source loaded from url
         NotificationCenter.default.addObserver(self, selector: #selector(airportDataUpdated), name: Notification.Name(NOTIFICATION_DATASOURCE_UPDATED), object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == kDetailSegueIdentifire else {
+        guard segue.identifier == Identifires.DetailSegue else {
             return
         }
         let cellViewModelList: Array<AirportTableViewCellViewModel> = airportTableViewModel.getAirportListDataSource(searchText: airportListSearchBar?.text ?? "")
@@ -56,7 +56,7 @@ extension AirportTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: kAirportTableViewCellIdentifire, for: indexPath)
+        let tableViewCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: Identifires.AirportTableView, for: indexPath)
         (tableViewCell as? AirporteTableViewCell)?.configureView(cellViewModel: airportTableViewModel.getAirportListDataSource(searchText: airportListSearchBar?.text ?? "")[indexPath.row])
         return tableViewCell
     }
@@ -65,7 +65,7 @@ extension AirportTableViewController: UITableViewDataSource {
 //MARK: TableViewDelegate
 extension AirportTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: kDetailSegueIdentifire, sender: indexPath)
+        performSegue(withIdentifier: Identifires.DetailSegue, sender: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

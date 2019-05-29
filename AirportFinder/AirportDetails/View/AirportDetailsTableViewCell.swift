@@ -21,8 +21,8 @@ class  AirportDetailsTableViewCell: UITableViewCell {
      - Parameter cellViewModel: view model which is responsible for providing data to view.
      */
     func configureView(cellViewModel: AirportDetailsTableCellViewModel?) {
-        airportNameLabel?.text = "\(kAirportName) \(cellViewModel?.getAirportName() ?? kNotAvailableString)"
-        airportRunwayLenghtLabel?.text = "\(kRunwayLenght) \(cellViewModel?.getAirportRunwayLenght() ?? kNotAvailableString)"
-        airportCountryNameLabel?.text = "\(kCountryName) \(cellViewModel?.getAirportCity() ?? kNotAvailableString)"
+        airportNameLabel?.text = "\(CellLabels.AirportName) \(cellViewModel?.getAirportName() ?? CellLabels.NotAvailable)"
+        airportRunwayLenghtLabel?.text = "\(CellLabels.RunwayLenght) \(cellViewModel?.getAirportRunwayLenght() ?? CellLabels.NotAvailable)"
+        airportCountryNameLabel?.text = "\(CellLabels.CountryName) \(cellViewModel?.getAirportCity() ?? CellLabels.NotAvailable)"
     }
 }

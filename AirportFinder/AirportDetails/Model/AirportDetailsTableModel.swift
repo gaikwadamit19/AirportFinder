@@ -10,9 +10,9 @@ import Foundation
 
 class AirportDetailsTableModel {
     
-    private var topFiveNearestAirports: Array<Airport>?
+    private var topFiveNearestAirports: [Airport]?
     
-    init(airports: Array<Airport>) {
+    init(airports: [Airport]) {
         topFiveNearestAirports = airports
     }
     
@@ -23,7 +23,7 @@ class AirportDetailsTableModel {
      - Returns: Array containing list of Airport Objects.
      */
 
-    func getTopFiveNearestAirports() -> Array<Airport> {
+    func getTopFiveNearestAirports() -> [Airport] {
         return topFiveNearestAirports ?? []
     }
 }

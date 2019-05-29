@@ -13,7 +13,7 @@ class AirportTableViewModel {
     
     fileprivate let airportTableNetworkDataDao: AirportTableNetworkDataDao = AirportTableNetworkDataDao()
     fileprivate var airportTableViewCellViewModelList: Array<AirportTableViewCellViewModel> = []
-    fileprivate var airportList: Array<Airport>?
+    fileprivate var airportList: [Airport]?
     
     init() {
         createCellViewModels()
@@ -38,12 +38,12 @@ class AirportTableViewModel {
     private func createCellViewModels() {
         airportTableNetworkDataDao.getAirportList { [weak self] (airportList) in
             guard let airportList = airportList  else {
-                UtilityHelper.showAlertView(message: kUnableToLoadJsonErrorMessage)
+                UtilityHelper.showAlertView(message: AlertStrings.UnableToLoadJsonErrorMessage)
                 return
             }
             
             guard !airportList.isEmpty else {
-                UtilityHelper.showAlertView(message: kNoJsonDataAvailableMessage)
+                UtilityHelper.showAlertView(message: AlertStrings.NoJsonDataAvailableMessage)
                 return
             }
             
@@ -83,7 +83,7 @@ extension AirportTableViewModel {
      - Parameter subString: String which we need to search.
      - Returns: Boolean value as tru or false.
      */
-    func getTopFiveNearestAirports(lat: Double, long: Double) -> Array<Airport> {
+    func getTopFiveNearestAirports(lat: Double, long: Double) -> [Airport] {
             let selectedAirportLocation: CLLocation = CLLocation(latitude: lat, longitude: long)
             var airportWithDistance: [[Airport: Double]] = []
             airportWithDistance = airportList?.reduce([]) { distance, airport  in

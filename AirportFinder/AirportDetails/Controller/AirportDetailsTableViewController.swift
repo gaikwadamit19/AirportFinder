@@ -15,7 +15,7 @@ class AirportDetailsTableViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = kDetailScreenTitle
+        self.navigationItem.title = ScreenTitles.Detail
     }
     
     /**
@@ -23,7 +23,7 @@ class AirportDetailsTableViewController: UIViewController {
      
      - Parameter: airports: Array list
      */
-    func setTopFiveNearbyAirport(airports: Array<Airport>) {
+    func setTopFiveNearbyAirport(airports: [Airport]) {
         airportDetailsTableViewModel = AirportDetailsTableViewModel(airports: airports)
     }
 }
@@ -36,7 +36,7 @@ extension AirportDetailsTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: kAirportTableViewCellIdentifire, for: indexPath)
+        let tableViewCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: Identifires.AirportTableView, for: indexPath)
         (tableViewCell as? AirportDetailsTableViewCell)?.configureView(cellViewModel: airportDetailsTableViewModel?.getAirportListDataSource()[indexPath.row])
         return tableViewCell
     }
