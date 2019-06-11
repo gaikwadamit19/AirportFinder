@@ -59,6 +59,10 @@ class AirportTableViewModel {
             self?.shouldRefreshTable.value = true
         }
     }
+    
+    deinit {
+        shouldRefreshTable = MutableProperty<Bool?>(nil)
+    }
 }
 
 //MARK: Search Helpers
