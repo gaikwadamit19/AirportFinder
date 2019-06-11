@@ -7,22 +7,32 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class AirportTableViewController: UIViewController {
 
     @IBOutlet weak var airportListTableView: UITableView?
     @IBOutlet weak var airportListSearchBar: UISearchBar?
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView?
-    
+        
     private let airportTableViewModel: AirportTableViewModel = AirportTableViewModel()
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = ScreenTitles.Search
         
-        //Notification on data source loaded from url
-        NotificationCenter.default.addObserver(self, selector: #selector(airportDataUpdated), name: Notification.Name(NOTIFICATION_DATASOURCE_UPDATED), object: nil)
+        airportTableViewModel.shouldRefreshTable.producer
+            .filter { $0 !=  nil }
+            .observe(on: UIScheduler())
+            .startWithValues { [weak self] disposable in
+                self?.activityIndicator?.stopAnimating()
+                self?.airportListTableView?.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,18 +44,7 @@ class AirportTableViewController: UIViewController {
             let airportCellViewModel: AirportTableViewCellViewModel = cellViewModelList[indexPath.row]
             viewController.setTopFiveNearbyAirport(airports: airportTableViewModel.getTopFiveNearestAirports(lat: airportCellViewModel.getLatitude(), long: airportCellViewModel.getLongitude()))            
         }
-    }
-    
-    /**
-     This method updates the controller that data finished loading,
-     We can use Reactive swift instead of Notification for responsive communication
-     */
-    @objc private func airportDataUpdated() {
-        DispatchQueue.main.async { [weak self] in
-            self?.activityIndicator?.stopAnimating()
-            self?.airportListTableView?.reloadData()
-        }
-    }
+    }    
 }
 
 //MARK: TableViewDatasource

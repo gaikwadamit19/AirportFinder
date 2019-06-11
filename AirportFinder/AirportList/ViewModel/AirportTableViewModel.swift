@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import ReactiveSwift
 
 class AirportTableViewModel {
     
@@ -15,6 +16,8 @@ class AirportTableViewModel {
     fileprivate var airportTableViewCellViewModelList: Array<AirportTableViewCellViewModel> = []
     fileprivate var airportList: [Airport]?
     
+    var shouldRefreshTable: MutableProperty<Bool?> = MutableProperty<Bool?>(nil)
+
     init() {
         createCellViewModels()
     }
@@ -53,7 +56,7 @@ class AirportTableViewModel {
                 self?.airportTableViewCellViewModelList.append(airportCellViewModel)
             }
             //Once JSON fully get loaded
-            NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFICATION_DATASOURCE_UPDATED), object: nil)
+            self?.shouldRefreshTable.value = true
         }
     }
 }
