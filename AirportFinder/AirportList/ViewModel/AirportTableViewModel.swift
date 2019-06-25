@@ -13,7 +13,7 @@ import ReactiveSwift
 class AirportTableViewModel {
     
     fileprivate let airportTableNetworkDataDao: AirportTableNetworkDataDao = AirportTableNetworkDataDao()
-    fileprivate var airportTableViewCellViewModelList: Array<AirportTableViewCellViewModel> = []
+    fileprivate var airportTableViewCellViewModelList: [AirportTableViewCellViewModel] = []
     fileprivate var airportList: [Airport]?
     
     var shouldRefreshTable: MutableProperty<Bool?> = MutableProperty<Bool?>(nil)
